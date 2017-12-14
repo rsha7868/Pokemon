@@ -17,7 +17,7 @@ public abstract class pokemonModel
 	
 	public final String[] getPokemonTypes()
 	{
-		CLass<?> [] types = getClass().getInterfaces();
+		Class<?> [] types = getClass().getInterfaces();
 		String [] pokeTypes = new String[types.length];
 		
 		for(int index = 0; index < types.length; index++)
@@ -25,7 +25,10 @@ public abstract class pokemonModel
 			String currentInterface = types[index].getCanonicalName();
 			currentInterface = currentInterface.replaceAll(this.getClass().getPackage().getName() + ".", "");
 			pokeTypes[index] = currentInterface;
+			
+			
 			}
+		return pokeTypes;
 	}
 	public String toString()
 	{
