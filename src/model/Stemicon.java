@@ -20,6 +20,14 @@ public class Stemicon extends pokemonModel implements Dragon, Wind
 	}
 	public String moveTornado()
 	{
-		
+		return "";
+	}
+	public String moveSteam()
+	{
+		return "";
+	}
+	public String moveDisapear()
+	{
+		return "";
 	}
 }
