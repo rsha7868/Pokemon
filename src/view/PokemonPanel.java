@@ -6,16 +6,18 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 import javax.swing.JTextArea;
-import Pokemon.controller.PokemonController;
+import controller.PokemonController;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
+import javax.swing.JComboBox;
+import javax.swing.JCheckBox;
 
 import controller.PokemonController;
 
-public class PokemonPanel exends JPanel
+public class PokemonPanel extends JPanel
 {
 	private PokemonController appController;
 	private SpringLayout appLayout;

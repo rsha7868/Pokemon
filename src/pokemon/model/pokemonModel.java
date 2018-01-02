@@ -1,4 +1,4 @@
-package model;
+package pokemon.model;
 
 public abstract class pokemonModel
 {

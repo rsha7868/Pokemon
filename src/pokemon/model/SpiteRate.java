@@ -1,4 +1,4 @@
-package model;
+package pokemon.model;
 
 public class SpiteRate extends pokemonModel implements Dragon, Wind, Fire
 {

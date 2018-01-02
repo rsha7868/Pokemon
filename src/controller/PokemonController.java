@@ -1,13 +1,14 @@
 package controller;
 
-import model.pokemonModel.Pokemon;
 import java.util.List;
+import pokemon.model.pokemonModel;
 import java.util.ArrayList;
+
 public class PokemonController
 {
-	private List<Pokemon> pokedex;
+	private List<pokemonModel> pokedex;
 	
-	public List<Pokemon> getPokedex()
+	public List<pokemonModel> getPokedex()
 	{
 		return pokedex;
 	}
