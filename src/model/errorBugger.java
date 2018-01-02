@@ -1,9 +1,15 @@
 package model;
 
-public class errorBugger extends Stemicon
+public class ErrorBugger extends Stemicon
 {
-	public errorBugger(int number, String name)
+	public ErrorBugger(int number, String name)
 	{
 		super(number, name);
+		setup();
+	}
+	public ErrorBugger()
+	{
+		super(10, "ErrorBugger");
+		
 	}
 }
