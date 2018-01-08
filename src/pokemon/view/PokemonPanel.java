@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JComboBox;
 import javax.swing.JCheckBox;
+import javax.swing.*;
 
 import controller.PokemonController;
 
@@ -71,6 +72,9 @@ public class PokemonPanel extends JPanel
 		evolvableLabel = new JLabel ("");
 		modifierLabel = new JLabel ("");
 		
+		iconLabel = new JLabel("",new ImageIcon(getClass().getResource("/pokemon/images/logo.png")), JLabel.CENTER);
+		
+		
 		evolvableBox = new JCheckBox ("");
 		nameField = new JTextField ("");
 		numberField = new JTextField ("");
@@ -85,11 +89,70 @@ public class PokemonPanel extends JPanel
 		clearButton = new JButton ("");
 		pokedexDropdown = new JComboBox ("");
 		
+		firstType = new JPanel();
+		secondType = new JPanel();
+		thirdType = new JPanel();
+		fourthType = new JPanel();
+		
+		setupLayout();
+		setupPanel();
+		setupListener();
 		
 	
 	}
 	public void setupPanel()
 	{
 		
+	}
+	
+	private void setupComboBox()
+	{
+		DefaultComboBoxModel poekemonModel = new DefaultComboBoxModel(appController.convertPokedex());
+		pokedexDropdrown.setModel(pokemonModel);
+	}
+	private void setupTypePanels()
+	{
+		firstType.setSize(50, 50);
+		secondType.setSize(50,50);
+		thirdType.setSize(50, 50);
+		fourthType.setSize(50, 50);
+	}
+	
+	private void updateTypePanels()
+	{
+		if(types[0].equals("Wind"))
+		{
+			firstType.setBackground(Color.GRAY);
+		}
+		else if(types[0].equals("Fire"))
+		{
+			firstType.setBackground(Color.RED);
+		}
+		else if(types[0].equals("Dragon"))
+		{
+			firstType.setBackground(Color.BLACK);
+		}
+		else
+		{
+			firstType.setBackground(Color.WHITE);
+		}
+		if(Types.length > 1)
+		{
+			
+		}
+	}
+	private void setupListeners()
+	{
+		pokedexDropdown.addActionListener( new ActionListener())
+		{
+			public void actionPerformed(ActionEvent selection)
+			{
+				int selectedPokemonIndex = pokedexDropdown.getSelectedIndex();
+				updatePokemonInfo(selectedPokemonIndex);
+				updateImage();
+				updateTyoePanels()
+				repaint();
+			}
+		});
 	}
 }
