@@ -1,4 +1,4 @@
-package view;
+package pokemon.view;
 
 import javax.swing.JTextField;
 import javax.swing.JPanel;
