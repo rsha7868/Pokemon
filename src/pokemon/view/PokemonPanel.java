@@ -97,6 +97,8 @@ public class PokemonPanel extends JPanel
 		setupLayout();
 		setupPanel();
 		setupListeners();
+		setupComboBox();
+		setupTypePanels();
 		
 	
 	}
@@ -150,7 +152,7 @@ public class PokemonPanel extends JPanel
 				int selectedPokemonIndex = pokedexDropdown.getSelectedIndex();
 				updatePokemonInfo(selectedPokemonIndex);
 				updateImage();
-				updateTyoePanels()
+				updateTypePanels();
 				repaint();
 			}
 		});
