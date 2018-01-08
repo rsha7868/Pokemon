@@ -96,7 +96,7 @@ public class PokemonPanel extends JPanel
 		
 		setupLayout();
 		setupPanel();
-		setupListener();
+		setupListeners();
 		
 	
 	}
@@ -107,8 +107,8 @@ public class PokemonPanel extends JPanel
 	
 	private void setupComboBox()
 	{
-		DefaultComboBoxModel poekemonModel = new DefaultComboBoxModel(appController.convertPokedex());
-		pokedexDropdrown.setModel(pokemonModel);
+		DefaultComboBoxModel pokemonModel = new DefaultComboBoxModel(appController.convertPokedex());
+		pokedexDropdown.setModel(pokemonModel);
 	}
 	private void setupTypePanels()
 	{
@@ -154,5 +154,9 @@ public class PokemonPanel extends JPanel
 				repaint();
 			}
 		});
+	}
+	public void setupLayout()
+	{
+		
 	}
 }
