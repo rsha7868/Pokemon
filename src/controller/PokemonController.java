@@ -46,8 +46,6 @@ public class PokemonController
 		}
 		return names;
 	}
-	public String[] getPokemonTypes()
-	{
-		
-	}
+	
+	
 }
