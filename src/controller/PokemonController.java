@@ -19,9 +19,9 @@ public class PokemonController
 		pokedex.add(new Stemicon());
 		pokedex.add(new Bearagon());
 		pokedex.add(new ErrorBugger());
-		pokedex.add(new HydroBird());
+		pokedex.add(new HydoBird());
 		pokedex.add(new Infurno());
-		pokedex.add(new SpriteRate());
+		pokedex.add(new SpiteRate());
 	}
 	public List<pokemonModel> getPokedex()
 	{
