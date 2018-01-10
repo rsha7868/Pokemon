@@ -19,6 +19,9 @@ public class SpiteRate extends pokemonModel implements Dragon, Wind, Fire
 	}
 	protected void setup()
 	{
-		this
+		this.setAttackPoints(950);
+		this.setCanEvolve(false);
+		this.setEnhancementModifier(.95);
+		this.setHealthPoints(1893);
 	}
 }
