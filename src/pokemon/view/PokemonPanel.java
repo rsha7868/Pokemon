@@ -96,7 +96,7 @@ public class PokemonPanel extends JPanel
 		
 		saveButton = new JButton ("");
 		clearButton = new JButton ("");
-		pokedexDropdown = new JComboBox ("");
+		pokedexDropdown = new JComboBox ();
 		
 		firstType = new JPanel();
 		secondType = new JPanel();
@@ -160,7 +160,7 @@ public class PokemonPanel extends JPanel
 			public void actionPerformed(ActionEvent selection)
 			{
 				int selectedPokemonIndex = pokedexDropdown.getSelectedIndex();
-				updatePokemonInfo(selectedPokemonIndex);
+				updatePokedexInfo(selectedPokemonIndex);
 				updateImage();
 				updateTypePanels();
 				repaint();
