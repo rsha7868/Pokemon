@@ -8,4 +8,5 @@ public class PokemonRunner
 	{
 		PokemonController app = new PokemonController();
 		app.start();
+	}
 }

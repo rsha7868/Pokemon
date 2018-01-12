@@ -17,10 +17,13 @@ import javax.swing.JCheckBox;
 import javax.swing.*;
 
 import controller.PokemonController;
+import java.awt.FlowLayout;
 
 public class PokemonPanel extends JPanel
 {
 	public PokemonPanel() {
+		FlowLayout flowLayout = (FlowLayout) getLayout();
+		flowLayout.setAlignOnBaseline(true);
 	}
 	private PokemonController appController;
 	private SpringLayout appLayout;
