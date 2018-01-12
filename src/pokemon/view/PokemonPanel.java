@@ -25,7 +25,7 @@ public class PokemonPanel extends JPanel
 	private PokemonController appController;
 	private SpringLayout appLayout;
 	
-	private JLabel healthlabel;
+	private JLabel healthLabel;
 	private JLabel attackLabel;
 	private JLabel nameLabel;
 	private JLabel numberLabel;
@@ -74,7 +74,7 @@ public class PokemonPanel extends JPanel
 	public PokemonPanel(PokemonController appController)
 	{
 		super();
-		healthlabel = new JLabel ("");
+		healthLabel = new JLabel ("");
 		attackLabel = new JLabel ("");
 		nameLabel = new JLabel ("");
 		numberLabel = new JLabel ("");
@@ -113,7 +113,30 @@ public class PokemonPanel extends JPanel
 	}
 	public void setupPanel()
 	{
-		
+		this.setBackground(Color.BLACK);
+		this.setLayout(appLayout);
+		this.add(healthLabel);
+		this.add(attackLabel);
+		this.add(nameLabel);
+		this.add(numberLabel);
+		this.add(evolvableLabel);
+		this.add(modifierLabel);
+		this.add(iconLabel);
+		this.add(evolvableBox);
+		this.add(nameField);
+		this.add(numberField);
+		this.add(attackField);
+		this.add(healthField);
+		this.add(modifierField);
+		this.add(descriptionArea);
+		this.add(typeArea);
+		this.add(saveButton);
+		this.add(clearButton);
+		this.add(pokedexDropdown);
+		this.add(firstType);
+		this.add(secondType);
+		this.add(thirdType);
+		this.add(fourthType);
 	}
 	
 	private void setupComboBox()
