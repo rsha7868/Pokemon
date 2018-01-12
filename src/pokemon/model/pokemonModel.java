@@ -19,12 +19,12 @@ public abstract class pokemonModel
 	public String[] getPokemonTypes()
 	{
 		String [] types = null;
-		Class<?> currentClass = this.getClass(); 		
+		Class<?> currentClass = this.getClass();
 		ArrayList<String> parentType = new ArrayList<String>();
 		
 		while(currentClass.getSuperclass() != null)
 		{
-			Class<?> [] pokemonTypes = getClass().getInterfaces();
+			Class<?> [] pokemonTypes = currentClass.getInterfaces();
 			types = new String[pokemonTypes.length];
 		
 			for(int index = 0; index < types.length; index++)
