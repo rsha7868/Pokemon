@@ -60,6 +60,15 @@ public class PokemonPanel extends JPanel
 	attackField.setText(appController.getPokedex().get(index).getAttackPoints() + "");
 	healthField.setText(appController.getPokedex().get(index).getHealthPoints() + "");
 	modifierField.setText(appController.getPokedex().get(index).getEnhancementModifier() + "");
+	
+	descriptionArea.setText(appController.getPokedex().get(index).toString());
+	typeArea.setText("");
+	
+	for(String current : appController.getPokedex().get(index).getPokemonTypes())
+		{
+			typeArea.append(current + "\n");
+		}
+	
 	}
 	
 	public PokemonPanel(PokemonController appController)
@@ -122,6 +131,7 @@ public class PokemonPanel extends JPanel
 	
 	private void updateTypePanels()
 	{
+		String [] types = appController.getPokedex().get(pokedexDropdown.getSelectedIndex()).getPokemonTypes();
 		if(types[0].equals("Wind"))
 		{
 			firstType.setBackground(Color.GRAY);
@@ -138,14 +148,14 @@ public class PokemonPanel extends JPanel
 		{
 			firstType.setBackground(Color.WHITE);
 		}
-		if(Types.length > 1)
+		if(types.length > 1)
 		{
 			
 		}
 	}
 	private void setupListeners()
 	{
-		pokedexDropdown.addActionListener( new ActionListener())
+		pokedexDropdown.addActionListener( new ActionListener()
 		{
 			public void actionPerformed(ActionEvent selection)
 			{
@@ -160,5 +170,23 @@ public class PokemonPanel extends JPanel
 	public void setupLayout()
 	{
 		
+	}
+	private void updateImage()
+	{
+		String path = "/pokemon/view/images/";
+		String defaultName = "logo";
+		String name = pokedexDropdown.getSelectedItem().toString();
+		String extension = ".png";
+		ImageIcon pokemonIcon;
+		
+		try
+		{
+			pokemonIcon = new ImageIcon(getClass().getResource(path + name + extension));
+		}
+		catch (NullPointerException missingImageFile)
+		{
+			pokemonIcon = new ImageIcon(getClass().getResource(path + defaultName + extension));
+		}
+		iconLabel.setIcon(pokemonIcon);
 	}
 }
