@@ -214,7 +214,7 @@ public class PokemonPanel extends JPanel
 			pokemonIcon = new ImageIcon(getClass().getResource(path + defaultName + extension));
 		}
 		iconLabel.setIcon(pokemonIcon);
-	}
+		}
 	saveButton.addActionListener(new ActionListener()
 	{
 		public void actionPerformed(ActionEvent click)
