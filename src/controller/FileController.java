@@ -26,8 +26,9 @@ public class FileController
 				int number = pokedex.get(index).getNumber();
 				int attack = pokedex.get(index).getAttackPoints();
 				int health = pokedex.get(index).getHealthPoints();
-				boolean evlove = pokedex.get(index).isCanEvolve();
-				double row = name + ","+ number + "," + health + "," + attack + "," + modify + "," + evolve + ",";
+				boolean evolve = pokedex.get(index).isCanEvolve();
+				double modify = pokedex.get(index).getEnhancementModifier();
+				String row = name + ","+ number + "," + health + "," + attack + "," + modify + "," + evolve + ",";
 				writeToDisk.println(row);
 			}
 			writeToDisk.close();

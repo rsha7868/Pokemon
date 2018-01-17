@@ -206,31 +206,31 @@ public class PokemonPanel extends JPanel
 		ImageIcon pokemonIcon;
 		
 		try
-		{
-			pokemonIcon = new ImageIcon(getClass().getResource(path + name + extension));
-		}
-		catch (NullPointerException missingImageFile)
-		{
+			{
+				pokemonIcon = new ImageIcon(getClass().getResource(path + name + extension));
+			}
+			catch (NullPointerException missingImageFile)
+			{
 			pokemonIcon = new ImageIcon(getClass().getResource(path + defaultName + extension));
-		}
-		iconLabel.setIcon(pokemonIcon);
-		}
+			}
+			iconLabel.setIcon(pokemonIcon);
+	}
 	saveButton.addActionListener(new ActionListener()
 	{
 		public void actionPerformed(ActionEvent click)
 		{
 			if(appController.isValidInterger(attackField.getText()) && appController.isValidInterger(healthField.getText())
 					&& appController.isValidDouble(modifierField.getText())
-					{
+				{
 						int selected = pokedexDropdown.getSelectedIndex();
 						int health = Integer.parseInt(healthField.getText());
 						int attack = Integer.parseInt(attackField.getText());
 						double modifier = Double.parseDouble(modifierField.getText());
 						String name = nameField.getText();
-						boolean evolveable = evolveableBox.isSelected();
+						boolean evolvable = evolvableBox.isSelected();
 						
-						appController.updateSelected(selected, health, attack, evolveable, modifier, name);
-					}
+						appController.updateSelected(selected, health, attack, evolvable, modifier, name);
+				}
 		}
 		
 	});
