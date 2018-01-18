@@ -21,10 +21,7 @@ import java.awt.FlowLayout;
 
 public class PokemonPanel extends JPanel
 {
-	public PokemonPanel() {
-		FlowLayout flowLayout = (FlowLayout) getLayout();
-		flowLayout.setAlignOnBaseline(true);
-	}
+	
 	private PokemonController appController;
 	private SpringLayout appLayout;
 	
@@ -77,6 +74,9 @@ public class PokemonPanel extends JPanel
 	public PokemonPanel(PokemonController appController)
 	{
 		super();
+		this.appController = appController;
+		
+		appLayout = new SpringLayout();
 		healthLabel = new JLabel ("");
 		attackLabel = new JLabel ("");
 		nameLabel = new JLabel ("");
@@ -88,20 +88,40 @@ public class PokemonPanel extends JPanel
 		
 		
 		evolvableBox = new JCheckBox ("");
+		appLayout.putConstraint(SpringLayout.NORTH, evolvableBox, 213, SpringLayout.NORTH, this);
+		appLayout.putConstraint(SpringLayout.WEST, evolvableBox, 0, SpringLayout.WEST, healthLabel);
 		nameField = new JTextField ("");
+		appLayout.putConstraint(SpringLayout.SOUTH, nameField, -10, SpringLayout.SOUTH, this);
+		appLayout.putConstraint(SpringLayout.EAST, nameField, -26, SpringLayout.EAST, this);
 		numberField = new JTextField ("");
+		appLayout.putConstraint(SpringLayout.NORTH, numberField, 0, SpringLayout.NORTH, nameField);
+		appLayout.putConstraint(SpringLayout.EAST, numberField, -20, SpringLayout.WEST, nameField);
 		attackField = new JTextField ("");
+		appLayout.putConstraint(SpringLayout.NORTH, attackField, 0, SpringLayout.NORTH, nameField);
+		appLayout.putConstraint(SpringLayout.EAST, attackField, -31, SpringLayout.WEST, numberField);
 		healthField = new JTextField ("");
+		appLayout.putConstraint(SpringLayout.NORTH, healthField, 0, SpringLayout.NORTH, nameField);
+		appLayout.putConstraint(SpringLayout.EAST, healthField, -34, SpringLayout.WEST, attackField);
 		modifierField = new JTextField ("");
+		appLayout.putConstraint(SpringLayout.NORTH, modifierField, 0, SpringLayout.NORTH, nameField);
+		appLayout.putConstraint(SpringLayout.EAST, modifierField, -36, SpringLayout.WEST, healthField);
 		
 		descriptionArea = new JTextArea ("");
 		typeArea = new JTextArea ("");
 		
 		saveButton = new JButton ("");
+		appLayout.putConstraint(SpringLayout.WEST, saveButton, 21, SpringLayout.WEST, this);
 		clearButton = new JButton ("");
+		appLayout.putConstraint(SpringLayout.NORTH, saveButton, 29, SpringLayout.SOUTH, clearButton);
+		appLayout.putConstraint(SpringLayout.WEST, clearButton, 0, SpringLayout.WEST, healthLabel);
 		pokedexDropdown = new JComboBox();
+		appLayout.putConstraint(SpringLayout.SOUTH, pokedexDropdown, -423, SpringLayout.SOUTH, this);
+		appLayout.putConstraint(SpringLayout.NORTH, clearButton, 6, SpringLayout.SOUTH, pokedexDropdown);
+		appLayout.putConstraint(SpringLayout.WEST, pokedexDropdown, 10, SpringLayout.WEST, this);
 		
 		firstType = new JPanel();
+		appLayout.putConstraint(SpringLayout.SOUTH, firstType, 0, SpringLayout.SOUTH, nameField);
+		appLayout.putConstraint(SpringLayout.EAST, firstType, -103, SpringLayout.WEST, modifierField);
 		secondType = new JPanel();
 		thirdType = new JPanel();
 		fourthType = new JPanel();
@@ -158,6 +178,8 @@ public class PokemonPanel extends JPanel
 	private void updateTypePanels()
 	{
 		String [] types = appController.getPokedex().get(pokedexDropdown.getSelectedIndex()).getPokemonTypes();
+		firstType.setBackground(Color.WHITE);
+		secondType.setBackground(Color.WHITE);
 		if(types[0].equals("Wind"))
 		{
 			firstType.setBackground(Color.GRAY);
@@ -170,28 +192,22 @@ public class PokemonPanel extends JPanel
 		{
 			firstType.setBackground(Color.BLACK);
 		}
-		else
-		{
-			firstType.setBackground(Color.WHITE);
-		}
 		if(types.length > 1)
 		{
-			
-		}
-	}
-	private void setupListeners()
-	{
-		pokedexDropdown.addActionListener( new ActionListener()
-		{
-			public void actionPerformed(ActionEvent selection)
+			if(types[0].equals("Wind"))
 			{
-				int selectedPokemonIndex = pokedexDropdown.getSelectedIndex();
-				updatePokedexInfo(selectedPokemonIndex);
-				updateImage();
-				updateTypePanels();
-				repaint();
+				secondType.setBackground(Color.GRAY);
 			}
-		});
+			else if(types[0].equals("Fire"))
+			{
+				secondType.setBackground(Color.RED);
+			}
+			else if(types[0].equals("Dragon"))
+			{
+				secondType.setBackground(Color.BLACK);
+			}
+		}
+	
 	}
 	public void setupLayout()
 	{
@@ -215,23 +231,38 @@ public class PokemonPanel extends JPanel
 			}
 			iconLabel.setIcon(pokemonIcon);
 	}
-	saveButton.addActionListener(new ActionListener()
-	{
+	
+	private void setupListeners()
+		{
+			pokedexDropdown.addActionListener( new ActionListener()
+			{
+				public void actionPerformed(ActionEvent selection)
+				{
+					int selectedPokemonIndex = pokedexDropdown.getSelectedIndex();
+					updatePokedexInfo(selectedPokemonIndex);
+					updateImage();
+					updateTypePanels();
+					repaint();
+				}
+			});
+		saveButton.addActionListener(new ActionListener()
+		{
 		public void actionPerformed(ActionEvent click)
 		{
 			if(appController.isValidInterger(attackField.getText()) && appController.isValidInterger(healthField.getText())
-					&& appController.isValidDouble(modifierField.getText())
-				{
-						int selected = pokedexDropdown.getSelectedIndex();
-						int health = Integer.parseInt(healthField.getText());
-						int attack = Integer.parseInt(attackField.getText());
-						double modifier = Double.parseDouble(modifierField.getText());
-						String name = nameField.getText();
-						boolean evolvable = evolvableBox.isSelected();
-						
-						appController.updateSelected(selected, health, attack, evolvable, modifier, name);
-				}
+					&& appController.isValidDouble(modifierField.getText()))
+			{
+				int selected = pokedexDropdown.getSelectedIndex();
+				int health = Integer.parseInt(healthField.getText());
+				int attack = Integer.parseInt(attackField.getText());
+				double modifier = Double.parseDouble(modifierField.getText());
+				String name = nameField.getText();
+				boolean evolvable = evolvableBox.isSelected();
+				
+				appController.updateSelected(selected, health, attack, evolvable, modifier, name);
+			}
 		}
 		
-	});
+		});
+	}
 }
